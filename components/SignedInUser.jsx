@@ -85,7 +85,7 @@ const SignedInUser = ({ user }) => {
               css={{
                 minWidth: '100%',
               }}
-              href='#'
+              href='/games/cards'
             >
               {item}
             </Link>
