@@ -7,6 +7,7 @@ import ScoreBoard from '@/components/ScoreBoard';
 
 export default function Cards() {
   const [user, setUser] = useState(null);
+  const [message, setMessage] = useState('');
 
   const router = useRouter();
 
@@ -120,12 +121,16 @@ export default function Cards() {
             .update({ score: turns })
             .eq('user_id', user.id);
 
-          console.log('new turnes submited');
+          setMessage('امتیاز ثبت شد');
+          location.reload();
         } else if (profile.score > turns) {
           await supabase
             .from('profiles')
             .update({ score: turns })
             .eq('user_id', user.id);
+
+          setMessage('رکورد جدید ثبت شد');
+          location.reload();
         }
       }
     };
@@ -137,10 +142,7 @@ export default function Cards() {
     <div className='min-h-screen'>
       <div className='app mx-auto max-w-3xl'>
         <div className='flex justify-center'>
-          <Button
-            className='mt-4 bg-gradient-to-r from-slate-800 to-indigo-800'
-            onClick={shuffleCards}
-          >
+          <Button className='mt-4 bg-[#0072F5]' onClick={shuffleCards} shadow>
             New Game
           </Button>
         </div>
@@ -159,7 +161,8 @@ export default function Cards() {
         <p className='text-center text-2xl mt-4'>
           Rounds = <span className='text-indigo-600 font-bold'>{turns}</span>
         </p>
-        {playerWon ? <p>All cards have been matched!</p> : null}
+        {message && <p className='text-green-500'>{message}🥳</p>}
+        {playerWon && <small>شما برنده شدید</small>}
       </div>
 
       <ScoreBoard />
