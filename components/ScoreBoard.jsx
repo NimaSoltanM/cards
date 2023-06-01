@@ -32,7 +32,7 @@ const ScoreBoard = () => {
 
   return (
     <div
-      className='rounded-lg shadow-2xl bg-opacity-30 backdrop-filter backdrop-blur-3xl bg-white block w-full md:w-72 md:fixed top-20 left-8 p-6'
+      className='rounded-lg shadow-2xl bg-gradient-to-br from-cyan-900 to-indigo-900 block w-full md:w-72 md:fixed top-20 left-8 p-6'
       style={{ direction: 'rtl' }}
     >
       <div className='flex flex-col'>

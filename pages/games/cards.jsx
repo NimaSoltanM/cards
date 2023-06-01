@@ -168,15 +168,14 @@ export default function Cards() {
             />
           ))}
         </div>
-        <p className='text-center text-2xl mt-4'>
-          Rounds = <span className='text-indigo-600 font-bold'>{turns}</span>
+        <p className='text-center text-2xl md:mt-8'>
+          Rounds = <span className='text-cyan-400 font-bold'>{turns}</span>
         </p>
         {message && (
           <div className='bg-green-600 p-2 rounded-xl mt-4'>
             <h1 className='text-white text-center'>{message}🥳</h1>
           </div>
         )}
-        {playerWon && <small>شما برنده شدید</small>}
       </div>
 
       <ScoreBoard />

@@ -14,7 +14,7 @@ const SignedInUser = ({ user }) => {
       alert('یه چیزی شد که اونچه باید میشد ، نشد');
     }
 
-    router.reload();
+    location.replace('/');
   };
 
   const settingHandler = () => {

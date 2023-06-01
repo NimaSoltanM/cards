@@ -3,6 +3,7 @@ import { Layout } from './Layout.js';
 import { AcmeLogo } from './AcmeLogo.js';
 import AuthControl from './AuthControl.jsx';
 import { useRouter } from 'next/router';
+import Link from 'next/link.js';
 
 export default function App() {
   const router = useRouter();
@@ -22,10 +23,12 @@ export default function App() {
             },
           }}
         >
-          <AcmeLogo />
-          <Text b color='inherit' hideIn='xs'>
-            ACME
-          </Text>
+          <Link href='/'>
+            <AcmeLogo />
+            <Text b color='inherit' hideIn='xs'>
+              ACME
+            </Text>
+          </Link>
         </Navbar.Brand>
         <Navbar.Content enableCursorHighlight hideIn='xs' variant='highlight'>
           <Navbar.Link
