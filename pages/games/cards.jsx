@@ -25,6 +25,18 @@ export default function Cards() {
     getUser();
   }, []);
 
+  useEffect(() => {
+    let timeout;
+
+    if (message) {
+      timeout = setTimeout(() => {
+        setMessage('');
+      }, 5000);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [message]);
+
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
@@ -122,7 +134,6 @@ export default function Cards() {
             .eq('user_id', user.id);
 
           setMessage('امتیاز ثبت شد');
-          location.reload();
         } else if (profile.score > turns) {
           await supabase
             .from('profiles')
@@ -130,7 +141,6 @@ export default function Cards() {
             .eq('user_id', user.id);
 
           setMessage('رکورد جدید ثبت شد');
-          location.reload();
         }
       }
     };
@@ -161,7 +171,11 @@ export default function Cards() {
         <p className='text-center text-2xl mt-4'>
           Rounds = <span className='text-indigo-600 font-bold'>{turns}</span>
         </p>
-        {message && <p className='text-green-500'>{message}🥳</p>}
+        {message && (
+          <div className='bg-green-600 p-2 rounded-xl mt-4'>
+            <h1 className='text-white text-center'>{message}🥳</h1>
+          </div>
+        )}
         {playerWon && <small>شما برنده شدید</small>}
       </div>
 
